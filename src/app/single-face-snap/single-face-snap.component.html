@@ -1,0 +1,16 @@
+<!-- Utilisation du String Interpolation {{ }} et du attributeBinding [] -->
+
+<div class="face-snap-card snapped" [ngClass]="{ snapped: buttonText === 'Oops, un Snap' }">
+    <p> {{ 32.87 | currency: 'EUR' : 'code'  }} </p> <!-- currency en $US par defaut *** code => pour afficher le code la monnaie plutôt que son symbole-->
+        <p> {{ 0.335 | percent}}</p> <!-- percent: '1.0-1' pour spécifier à Angular qu'on un chiffe après la virgule (ça évite d'arrondir de façon automatique)-->
+    <p>{{ 4346234.36 | number:'1.0-1' }}</p> <!--Decimal pipe => number, number: 'minchiffreapresvirguel-maxapresvirgule'-->
+    <h2> {{ faceSnap.title | uppercase }} </h2> <!-- uppercase, lowercase, titlecase-->
+    <p> mise en ligne le {{ faceSnap.createdDate | date: 'd MMM yyyy' }}</p> <!-- date:'medium' date:'longDate' date:'LongTime' VOIR DOCS -->
+    <img width="200" height="200" [src]="faceSnap.imageUrl" [alt]="faceSnap.title" > <!-- [this is called attribute binding]-->
+    <p> Description : {{ faceSnap.description }}</p>
+    <p *ngIf="faceSnap.location">L'entreprise se situe à {{faceSnap.location }}</p>
+    <p>
+        <button (click)="onClickSnap()">{{ buttonText }}</button> <!-- Event binding -->
+    </p>
+    <p> 🤞 <span [ngStyle]="{ color: 'rgb(0, '+faceSnap.snaps+',0)'}">{{ faceSnap.snaps }}</span></p> <!-- Ça deviendra de plus en plus au fur et à mesure le nombre de Snaps augmente-->
+    </div>

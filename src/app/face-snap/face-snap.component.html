@@ -1,4 +1,5 @@
 <!-- Utilisation du String Interpolation {{ }} et du attributeBinding [] -->
+
 <div class="face-snap-card snapped" [ngClass]="{ snapped: buttonText === 'Oops, un Snap' }">
 <p> {{ 32.87 | currency: 'EUR' : 'code'  }} </p> <!-- currency en $US par defaut *** code => pour afficher le code la monnaie plutôt que son symbole-->
     <p> {{ 0.335 | percent}}</p> <!-- percent: '1.0-1' pour spécifier à Angular qu'on un chiffe après la virgule (ça évite d'arrondir de façon automatique)-->

@@ -20,7 +20,9 @@
 // Ajouter le modificateur public devant chaque propriété du constructor()
 // ? => la propriété est optionnelle
 export class FaceSnap{
-    constructor(public title:string,
+    constructor(
+                public id:number,
+                public title:string,
                 public description: string,
                 public imageUrl: string,
                 public createdDate: Date,

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap-model';
+import { FaceSnapsService } from '../services/face-snaps-service';
 
 @Component({ // @ => c'est un décorateur => un decorateur vient apporter des modifications à une classe-Les modificatons ici c'est pour faire en sorte que face-snap-component soit un component utilisable dans notre application.
   selector: 'app-face-snap', // ce sélecteur va repésenter la balise (i.e le nom) dans app.component.html
@@ -19,23 +20,20 @@ export class FaceSnapComponent implements OnInit { // Implémenter une interface
   imageUrl!:string
   buttonText!:string
 
+  constructor(private faceSnapsService:FaceSnapsService){ } //Injecter nos services ici => le système d'injection des dépendances vanous injecter le service
+
   ngOnInit() { // OnInit() est appelée automatiquement par Angular lors de la creation de chaque instance
-      // this.title = 'Archibald';
-      // this.description = "My best friend since day one"
-      // this.createdDate = new Date();
-      // this.snaps = 6; // 6 personnes ont like ma pub.
-      // this.imageUrl = "https://i.ebayimg.com/images/g/69AAAOSwWi9hYWiH/s-l1600.jpg"
       this.buttonText = "Ooh Snap !"
       
   }
 
   onClickSnap(){
     if(this.buttonText === "Ooh Snap !"){
-      this.faceSnap.snaps++;
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap'); // le faceSnap reçu
       this.buttonText = 'Oops, un Snap'
     }else{
       this.buttonText = "Ooh Snap !"
-      this.faceSnap.snaps--;
+      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap')
     }
   }
 }

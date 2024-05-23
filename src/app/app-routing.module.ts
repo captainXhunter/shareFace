@@ -6,7 +6,7 @@ import { SingleFaceSnapComponent } from './single-face-snap/single-face-snap.com
 
 // Le tableau principal de toutes les routes de notre application
 const routes: Routes = [
-  {path: 'faceSnaps/:id', component:SingleFaceSnapComponent},
+  { path: 'faceSnaps/:id', component:SingleFaceSnapComponent},
   { path: 'faceSnaps', component: FaceSnapListComponent},
   { path: '', component: LandingPageComponent}
 ];
@@ -16,3 +16,18 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+// {
+//   path: 'tasks',
+//   component: TasksDashboardComponent,
+//   canActivate: [AuthGuard],
+//   children: [
+//     { path: '', redirectTo: 'list', pathMatch: 'full' },
+//     { path: 'list', component: TaskListComponent },
+//     { path: 'detail/:id', component: TaskDetailComponent }
+//   ]
+// },
+// // Wildcard Route for a 404 page
+// { path: '**', redirectTo: '/tasks' }
